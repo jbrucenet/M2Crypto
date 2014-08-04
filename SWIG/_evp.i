@@ -49,6 +49,7 @@ extern const EVP_MD *EVP_sha512(void);
 %rename(digest_init) EVP_DigestInit;
 extern int EVP_DigestInit(EVP_MD_CTX *, const EVP_MD *);
 
+#ifndef OPENSSL_NO_DES
 %rename(des_ecb) EVP_des_ecb;
 extern const EVP_CIPHER *EVP_des_ecb(void);
 %rename(des_ede_ecb) EVP_des_ede;
@@ -73,6 +74,9 @@ extern const EVP_CIPHER *EVP_des_ofb(void);
 extern const EVP_CIPHER *EVP_des_ede_ofb(void);
 %rename(des_ede3_ofb) EVP_des_ede3_ofb;
 extern const EVP_CIPHER *EVP_des_ede3_ofb(void);
+#endif
+
+#ifndef OPENSSL_NO_BF
 %rename(bf_ecb) EVP_bf_ecb;
 extern const EVP_CIPHER *EVP_bf_ecb(void);
 %rename(bf_cbc) EVP_bf_cbc;
@@ -81,12 +85,15 @@ extern const EVP_CIPHER *EVP_bf_cbc(void);
 extern const EVP_CIPHER *EVP_bf_cfb(void);
 %rename(bf_ofb) EVP_bf_ofb;
 extern const EVP_CIPHER *EVP_bf_ofb(void);
+#endif
+
 /*
 %rename(idea_ecb) extern const EVP_CIPHER *EVP_idea_ecb(void);
 %rename(idea_cbc) extern const EVP_CIPHER *EVP_idea_cbc(void);
 %rename(idea_cfb) extern const EVP_CIPHER *EVP_idea_cfb(void);
 %rename(idea_ofb) extern const EVP_CIPHER *EVP_idea_ofb(void);
 */
+#ifndef OPENSSL_NO_CAST
 %rename(cast5_ecb) EVP_cast5_ecb;
 extern const EVP_CIPHER *EVP_cast5_ecb(void);
 %rename(cast5_cbc) EVP_cast5_cbc;
@@ -95,16 +102,24 @@ extern const EVP_CIPHER *EVP_cast5_cbc(void);
 extern const EVP_CIPHER *EVP_cast5_cfb(void);
 %rename(cast5_ofb) EVP_cast5_ofb;
 extern const EVP_CIPHER *EVP_cast5_ofb(void);
+#endif
 /*
 %rename(rc5_ecb) extern const EVP_CIPHER *EVP_rc5_32_12_16_ecb(void);
 %rename(rc5_cbc) extern const EVP_CIPHER *EVP_rc5_32_12_16_cbc(void);
 %rename(rc5_cfb) extern const EVP_CIPHER *EVP_rc5_32_12_16_cfb(void);
 %rename(rc5_ofb) extern const EVP_CIPHER *EVP_rc5_32_12_16_ofb(void);
 */
+#ifndef OPENSSL_NO_RC4
 %rename(rc4) EVP_rc4;
 extern const EVP_CIPHER *EVP_rc4(void);
+#endif
+
+#ifndef OPENSSL_NO_RC2
 %rename(rc2_40_cbc) EVP_rc2_40_cbc;
 extern const EVP_CIPHER *EVP_rc2_40_cbc(void);
+#endif
+
+#ifndef OPENSSL_NO_AES
 %rename(aes_128_ecb) EVP_aes_128_ecb;
 extern const EVP_CIPHER *EVP_aes_128_ecb(void);
 %rename(aes_128_cbc) EVP_aes_128_cbc;
@@ -129,6 +144,7 @@ extern const EVP_CIPHER *EVP_aes_256_cbc(void);
 extern const EVP_CIPHER *EVP_aes_256_cfb(void);
 %rename(aes_256_ofb) EVP_aes_256_ofb;
 extern const EVP_CIPHER *EVP_aes_256_ofb(void);
+#endif
 
 %rename(cipher_set_padding) EVP_CIPHER_CTX_set_padding;
 extern int EVP_CIPHER_CTX_set_padding(EVP_CIPHER_CTX *, int);
